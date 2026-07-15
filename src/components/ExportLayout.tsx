@@ -191,7 +191,7 @@ export default function ExportLayout({ inputs, results }: Props) {
         opacity: 0.4,
         margin: '10px 0 0',
       }}>
-        Generated with Pleats
+        Generated with Pleats Studio · made by Varun
       </p>
     </div>
   )

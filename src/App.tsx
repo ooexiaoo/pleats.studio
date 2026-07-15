@@ -50,9 +50,8 @@ export default function App() {
       {showExport && <ExportLayout inputs={inputs} results={results} />}
 
       <header className="border-b border-ivory-dark bg-ivory/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <h1 className="text-3xl sm:text-4xl text-charcoal tracking-tight">Pleats</h1>
-          <p className="text-sm text-charcoal-light hidden sm:block">Skirt pleat calculator</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <h1 className="text-3xl sm:text-4xl text-charcoal tracking-tight">Pleats Studio</h1>
         </div>
       </header>
 
@@ -82,7 +81,7 @@ export default function App() {
       </main>
 
       <footer className="border-t border-ivory-dark py-6 text-center text-sm text-charcoal-light">
-        Pleats — a skirt pleat calculator
+        Pleats Studio · made by <a href="https://github.com/ooexiaoo" target="_blank" className="underline hover:text-charcoal transition-colors">Varun</a>
       </footer>
     </div>
   )

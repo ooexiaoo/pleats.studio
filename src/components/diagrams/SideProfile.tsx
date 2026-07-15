@@ -28,10 +28,10 @@ export default function SideProfile({ inputs, results, maxHeight }: Props) {
   const vw = visibleWidthPerPleat
   const dw = pleatDepth
 
-  const foldH = dw * 5
-  const padX = vw * 2
-  const padTop = 12
-  const padBot = 12
+  const foldH = dw * 15
+  const padX = Math.max(vw * 3, 25)
+  const padTop = 8
+  const padBot = 8
 
   const baseY = padTop + foldH + 4
   const topY = baseY - foldH
@@ -115,7 +115,7 @@ export default function SideProfile({ inputs, results, maxHeight }: Props) {
       <line x1={padX * 0.4} y1={baseY} x2={padX + drawnWidth + padX * 0.4} y2={baseY}
         stroke={COLORS.sageLight} strokeWidth={0.6} strokeDasharray="3,2" />
 
-      <path d={pathD} fill="none" stroke={COLORS.rose} strokeWidth={2} strokeLinejoin="round" />
+      <path d={pathD} fill="none" stroke={COLORS.rose} strokeWidth={3} strokeLinejoin="round" />
 
       {tickMarks}
 
