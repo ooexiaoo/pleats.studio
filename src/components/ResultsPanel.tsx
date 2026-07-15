@@ -1,3 +1,4 @@
+import { PleatType } from '../types'
 import type { PleatInputs, PleatResults } from '../types'
 
 interface ResultsPanelProps {
@@ -7,10 +8,16 @@ interface ResultsPanelProps {
 
 export default function ResultsPanel({ inputs, results }: ResultsPanelProps) {
   const u = inputs.unit === 'cm' ? 'cm' : 'in'
+  const isBoxType = inputs.pleatType === PleatType.Box || inputs.pleatType === PleatType.InvertedBox
 
   const rows = [
     { label: 'Visible Width per Pleat', value: results.visibleWidthPerPleat },
-    { label: 'Pleat Depth', value: results.pleatDepth },
+    ...(isBoxType
+      ? [
+          { label: 'Left Fold Depth', value: results.leftFoldDepth },
+          { label: 'Right Fold Depth', value: results.rightFoldDepth },
+        ]
+      : [{ label: 'Fold Depth', value: results.pleatDepth }]),
     { label: 'Fabric per Pleat', value: results.fabricPerPleat },
     { label: 'Total Fabric Width Needed', value: results.totalFabricWidth },
     { label: 'Fabric Length (skirt length)', value: results.totalFabricLength },
@@ -23,6 +30,16 @@ export default function ResultsPanel({ inputs, results }: ResultsPanelProps) {
   return (
     <div className="space-y-3">
       <h2 className="text-2xl text-charcoal">Results</h2>
+
+      {results.warnings.length > 0 && (
+        <div className="space-y-2">
+          {results.warnings.map((w, i) => (
+            <div key={i} className="px-4 py-3 rounded-xl text-sm font-medium border bg-rose/10 border-rose/30 text-rose-dark">
+              {w}
+            </div>
+          ))}
+        </div>
+      )}
 
       {inputs.clothWidth > 0 && (
         <div className={`px-4 py-3 rounded-xl text-sm font-medium border ${

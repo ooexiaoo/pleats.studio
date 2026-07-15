@@ -1,6 +1,6 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { PleatType, Unit, type PleatInputs, type PleatResults } from './types'
-import { calculatePleats } from './utils/pleatCalculations'
+import { calculatePleats, getDefaultParts } from './utils/pleatCalculations'
 import { downloadDiagramPng } from './utils/exportUtils'
 import PleatForm from './components/PleatForm'
 import ResultsPanel from './components/ResultsPanel'
@@ -17,9 +17,23 @@ const DEFAULT_INPUTS: PleatInputs = {
 }
 
 export default function App() {
-  const [inputs, setInputs] = useState<PleatInputs>(DEFAULT_INPUTS)
+  const [inputs, setInputs] = useState<PleatInputs>(() => ({
+    ...DEFAULT_INPUTS,
+    pleatParts: getDefaultParts(DEFAULT_INPUTS),
+  }))
   const [showExport, setShowExport] = useState(false)
   const downloading = useRef(false)
+  const prevTypeRef = useRef(inputs.pleatType)
+
+  useEffect(() => {
+    if (prevTypeRef.current !== inputs.pleatType) {
+      prevTypeRef.current = inputs.pleatType
+      setInputs((prev) => ({
+        ...prev,
+        pleatParts: getDefaultParts(prev),
+      }))
+    }
+  }, [inputs.pleatType])
 
   const results: PleatResults = calculatePleats(inputs)
 

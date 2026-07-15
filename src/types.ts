@@ -11,6 +11,13 @@ export enum Unit {
   Inches = 'inches',
 }
 
+export interface PleatParts {
+  visibleWidth: number
+  foldDepth: number
+  leftFoldDepth: number
+  rightFoldDepth: number
+}
+
 export interface PleatInputs {
   waistCircumference: number
   skirtLength: number
@@ -18,11 +25,14 @@ export interface PleatInputs {
   pleatType: PleatType
   unit: Unit
   clothWidth: number
+  pleatParts?: PleatParts
 }
 
 export interface PleatResults {
   visibleWidthPerPleat: number
   pleatDepth: number
+  leftFoldDepth: number
+  rightFoldDepth: number
   fabricPerPleat: number
   totalFabricWidth: number
   totalFabricLength: number
@@ -33,6 +43,7 @@ export interface PleatResults {
   fullnessRatio: number
   clothSufficient: boolean
   clothShortfall: number
+  warnings: string[]
 }
 
 export type DiagramTab = 'topdown' | 'flatlay' | 'sideprofile'

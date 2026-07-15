@@ -1,3 +1,4 @@
+import { PleatType } from '../types'
 import type { PleatInputs, PleatResults } from '../types'
 import TopDownCircle from './diagrams/TopDownCircle'
 import FlatLay from './diagrams/FlatLay'
@@ -31,9 +32,18 @@ export default function ExportLayout({ inputs, results }: Props) {
     ['Fullness Ratio', `${results.fullnessRatio}x`],
   ]
 
+  const isBoxType = inputs.pleatType === PleatType.Box || inputs.pleatType === PleatType.InvertedBox
+
+  const foldRows: [string, string][] = isBoxType
+    ? [
+        ['Left Fold Depth', `${results.leftFoldDepth.toFixed(2)} ${u}`],
+        ['Right Fold Depth', `${results.rightFoldDepth.toFixed(2)} ${u}`],
+      ]
+    : [['Fold Depth', `${results.pleatDepth.toFixed(2)} ${u}`]]
+
   const rightRows: [string, string][] = [
     ['Visible Width / Pleat', `${results.visibleWidthPerPleat.toFixed(2)} ${u}`],
-    ['Pleat Depth', `${results.pleatDepth.toFixed(2)} ${u}`],
+    ...foldRows,
     ['Fabric / Pleat', `${results.fabricPerPleat.toFixed(2)} ${u}`],
     ['Total Fabric Width', `${results.totalFabricWidth.toFixed(2)} ${u}`],
     ['Fabric Length', `${results.totalFabricLength.toFixed(2)} ${u}`],
