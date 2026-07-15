@@ -17,6 +17,7 @@ export interface PleatInputs {
   numberOfPleats: number
   pleatType: PleatType
   unit: Unit
+  clothWidth: number
 }
 
 export interface PleatResults {
@@ -27,8 +28,11 @@ export interface PleatResults {
   totalFabricLength: number
   waistRadius: number
   hemRadius: number
+  hemCircumference: number
   pleatAngle: number
   fullnessRatio: number
+  clothSufficient: boolean
+  clothShortfall: number
 }
 
 export type DiagramTab = 'topdown' | 'flatlay' | 'sideprofile'

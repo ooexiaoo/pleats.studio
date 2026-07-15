@@ -102,6 +102,7 @@ function DimensionSummary({ inputs, results }: { inputs: PleatInputs; results: P
     `Pleats: ${inputs.numberOfPleats}`,
     `Type: ${inputs.pleatType.replace('_', ' ')}`,
     `Fabric Width: ${results.totalFabricWidth.toFixed(1)}${u}`,
+    `Hem ⌀: ${results.hemCircumference.toFixed(1)}${u}`,
     `Pleat Depth: ${results.pleatDepth.toFixed(1)}${u}`,
     `Visible/pleat: ${results.visibleWidthPerPleat.toFixed(1)}${u}`,
   ]

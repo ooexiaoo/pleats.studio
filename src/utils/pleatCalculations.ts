@@ -9,7 +9,7 @@ const FULLNESS_RATIOS: Record<PleatType, number> = {
 }
 
 export function calculatePleats(inputs: PleatInputs): PleatResults {
-  const { waistCircumference, skirtLength, numberOfPleats, pleatType } = inputs
+  const { waistCircumference, skirtLength, numberOfPleats, pleatType, clothWidth } = inputs
 
   const fullnessRatio = FULLNESS_RATIOS[pleatType]
   const visibleWidthPerPleat = waistCircumference / numberOfPleats
@@ -19,7 +19,11 @@ export function calculatePleats(inputs: PleatInputs): PleatResults {
   const totalFabricLength = skirtLength
   const waistRadius = waistCircumference / (2 * Math.PI)
   const hemRadius = waistRadius + skirtLength
+  const hemCircumference = hemRadius * 2 * Math.PI
   const pleatAngle = 360 / numberOfPleats
+
+  const clothSufficient = clothWidth <= 0 || totalFabricWidth <= clothWidth
+  const clothShortfall = clothSufficient ? 0 : totalFabricWidth - clothWidth
 
   return {
     visibleWidthPerPleat,
@@ -29,8 +33,11 @@ export function calculatePleats(inputs: PleatInputs): PleatResults {
     totalFabricLength,
     waistRadius,
     hemRadius,
+    hemCircumference,
     pleatAngle,
     fullnessRatio,
+    clothSufficient,
+    clothShortfall,
   }
 }
 

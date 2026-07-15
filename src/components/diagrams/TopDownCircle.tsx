@@ -153,6 +153,10 @@ export default function TopDownCircle({ inputs, results }: Props) {
         color={COLORS.rose}
         offset={-4}
       />
+      <text x={center} y={center + hemRadius + 6} textAnchor="middle"
+        fontSize={2.8} fill={COLORS.charcoalLight} fontFamily="monospace">
+        hem ⌀ {results.hemCircumference.toFixed(1)}
+      </text>
     </svg>
   )
 }

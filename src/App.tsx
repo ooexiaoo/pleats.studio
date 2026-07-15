@@ -13,6 +13,7 @@ const DEFAULT_INPUTS: PleatInputs = {
   numberOfPleats: 20,
   pleatType: PleatType.Knife,
   unit: Unit.Cm,
+  clothWidth: 150,
 }
 
 export default function App() {

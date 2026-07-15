@@ -27,6 +27,7 @@ export default function ExportLayout({ inputs, results }: Props) {
     ['Skirt Length', `${inputs.skirtLength} ${u}`],
     ['Number of Pleats', `${inputs.numberOfPleats}`],
     ['Pleat Type', inputs.pleatType.replace('_', ' ')],
+    ['Cloth Width', inputs.clothWidth > 0 ? `${inputs.clothWidth} ${u}` : 'Not specified'],
     ['Fullness Ratio', `${results.fullnessRatio}x`],
   ]
 
@@ -38,6 +39,7 @@ export default function ExportLayout({ inputs, results }: Props) {
     ['Fabric Length', `${results.totalFabricLength.toFixed(2)} ${u}`],
     ['Waist Radius', `${results.waistRadius.toFixed(2)} ${u}`],
     ['Hem Radius', `${results.hemRadius.toFixed(2)} ${u}`],
+    ['Hem Circumference', `${results.hemCircumference.toFixed(2)} ${u}`],
     ['Angle / Pleat', `${results.pleatAngle.toFixed(2)}°`],
   ]
 

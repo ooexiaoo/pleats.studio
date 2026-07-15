@@ -80,6 +80,22 @@ export default function PleatForm({ inputs, onChange }: PleatFormProps) {
 
         <div>
           <label className="block text-sm font-medium text-charcoal-light mb-1.5">
+            Cloth Width ({inputs.unit})
+          </label>
+          <input
+            type="number"
+            value={inputs.clothWidth || ''}
+            onChange={(e) => update('clothWidth', parseFloat(e.target.value) || 0)}
+            placeholder="e.g. 150"
+            className="w-full px-4 py-3 rounded-xl bg-white border border-ivory-dark
+              focus:border-rose focus:ring-2 focus:ring-rose/20 outline-none
+              transition-all text-charcoal placeholder:text-charcoal-light/50"
+          />
+          <p className="text-xs text-charcoal-light mt-1">Optional — fabric bolt width</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-charcoal-light mb-1.5">
             Pleat Type
           </label>
           <div className="grid grid-cols-1 gap-2">
